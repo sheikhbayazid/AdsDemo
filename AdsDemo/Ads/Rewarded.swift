@@ -2,7 +2,7 @@ import SwiftUI
 import GoogleMobileAds
 
 final class Rewarded: NSObject, GADRewardedAdDelegate {
-    var rewardedAd: GADRewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-5930517905337542/8877029070") // your pub id and unit id. ca-app-pub-0000000000000000/0000000000
+    var rewardedAd: GADRewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-5930517905337542/8877029070") // your pub id and unit id.
     
     var rewardFunction: (() -> Void)? = nil
     
@@ -11,7 +11,7 @@ final class Rewarded: NSObject, GADRewardedAdDelegate {
         LoadRewarded()
     }
     
-    func LoadRewarded(){
+    func LoadRewarded() {
         let request = GADRequest()
         self.rewardedAd.load(request)
     }
@@ -33,7 +33,7 @@ final class Rewarded: NSObject, GADRewardedAdDelegate {
     }
     
     func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-        self.rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-5930517905337542/8877029070") // your pub id and unit id. ca-app-pub-0000000000000000/0000000000
+        self.rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-5930517905337542/8877029070") // your pub id and unit id.
         LoadRewarded()
     }
 }

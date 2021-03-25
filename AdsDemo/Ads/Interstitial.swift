@@ -2,7 +2,7 @@ import SwiftUI
 import GoogleMobileAds
 
 final class Interstitial: NSObject, GADInterstitialDelegate {
-    var interstitial:GADInterstitial = GADInterstitial(adUnitID: "ca-app-pub-5930517905337542/3651239662") // your pub id and unit id. ca-app-pub-0000000000000000/0000000000
+    var interstitial:GADInterstitial = GADInterstitial(adUnitID: "ca-app-pub-5930517905337542/3651239662") // your pub id and unit id.
     
     override init() {
         super.init()
@@ -25,7 +25,7 @@ final class Interstitial: NSObject, GADInterstitialDelegate {
     }
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        self.interstitial = GADInterstitial(adUnitID: "ca-app-pub-5930517905337542/3651239662") //// your pub id and unit id. ca-app-pub-0000000000000000/0000000000
+        self.interstitial = GADInterstitial(adUnitID: "ca-app-pub-5930517905337542/3651239662") //// your pub id and unit id.
         LoadInterstitial()
     }
 }

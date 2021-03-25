@@ -8,7 +8,7 @@ struct BannerAd: UIViewControllerRepresentable  {
         let view = GADBannerView(adSize: kGADAdSizeBanner)
         
         let viewController = UIViewController()
-        view.adUnitID = "ca-app-pub-5930517905337542/5734689242"    // your pub id and unit id. ca-app-pub-0000000000000000/0000000000
+        view.adUnitID = "ca-app-pub-5930517905337542/5734689242"    // your pub id and unit id
         view.rootViewController = viewController
         viewController.view.addSubview(view)
         viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)

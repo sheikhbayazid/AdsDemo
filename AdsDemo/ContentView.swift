@@ -10,12 +10,13 @@ import SwiftUI
 import GoogleMobileAds
 
 
-//Admob Google: sheikhbayazid@gmail.com
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+    @State private var isRewarded = false
+    
     var interstitial: Interstitial
     var rewardAd: Rewarded
-    
-    @Environment(\.colorScheme) var colorScheme
+    let screen = UIScreen.main.bounds.size
     
     var bgColor: Color {
         return colorScheme == .dark ? .white : .black
@@ -25,9 +26,8 @@ struct ContentView: View {
         return colorScheme == .dark ? .black : .white
     }
     
-    @State private var isRewarded = false
     
-    init(){
+    init() {
         self.interstitial = Interstitial()
         self.rewardAd = Rewarded()
     }
@@ -37,15 +37,16 @@ struct ContentView: View {
             VStack(spacing: 30) {
                 Spacer()
                 
+                //MARK: - Banner Ad
                 VStack {
                     BannerAd().frame(width: 320, height: 50, alignment: .top).padding()
-                }.frame(maxWidth: .infinity, maxHeight: 80)
+                }.frame(maxWidth: screen.width - 50, maxHeight: 80)
                 .background(Color.gray.opacity(0.5))
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding(.horizontal, 10)
                 
                 
                 VStack(spacing: 20) {
+                    //MARK: - Interstitial Ad Button
                     Button(action: {
                         self.interstitial.showAd()
                         
@@ -57,9 +58,10 @@ struct ContentView: View {
                             .clipShape(Capsule())
                     }
                     
+                    //MARK: - Reward Ad Button
                     Button(action:{
                         self.rewardAd.showAd {
-                            // reward requirement fulfilled
+                            // reward requirement fulfilled, give rewards
                             self.isRewarded = true
                             print("Give Rewards")
                         }
@@ -73,6 +75,7 @@ struct ContentView: View {
                     }
                 }
                 
+                //MARK: - Rewarded Text
                 if isRewarded {
                     Button(action: {
                         withAnimation(.easeInOut) {
@@ -91,10 +94,10 @@ struct ContentView: View {
                 
                 Spacer()
                 
-            }.frame(height: 550)
+            }.frame(width: screen.width - 30, height: 550)
             .background(Color.gray.opacity(0.25))
             .clipShape(RoundedRectangle(cornerRadius: 20))
-            
+            .padding(.vertical)
             .navigationTitle("Google Ads")
             
         }
