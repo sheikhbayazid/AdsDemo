@@ -1,10 +1,8 @@
 import SwiftUI
 import GoogleMobileAds
-import UIKit
 
-final class Rewarded: NSObject, GADRewardedAdDelegate{
-    
-    var rewardedAd:GADRewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+final class Rewarded: NSObject, GADRewardedAdDelegate {
+    var rewardedAd: GADRewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-5930517905337542/8877029070") // your pub id and unit id. ca-app-pub-0000000000000000/0000000000
     
     var rewardFunction: (() -> Void)? = nil
     
@@ -18,14 +16,13 @@ final class Rewarded: NSObject, GADRewardedAdDelegate{
         self.rewardedAd.load(request)
     }
     
-    func showAd(rewardFunction: @escaping () -> Void){
+    func showAd(rewardFunction: @escaping () -> Void) {
         if self.rewardedAd.isReady{
             self.rewardFunction = rewardFunction
             let root = UIApplication.shared.windows.first?.rootViewController
             self.rewardedAd.present(fromRootViewController: root!, delegate: self)
-        }
-        else{
-            print("Not Ready")
+        } else {
+            print("Reward ad is not ready!")
         }
     }
     
@@ -36,7 +33,7 @@ final class Rewarded: NSObject, GADRewardedAdDelegate{
     }
     
     func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-        self.rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        self.rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-5930517905337542/8877029070") // your pub id and unit id. ca-app-pub-0000000000000000/0000000000
         LoadRewarded()
     }
 }

@@ -2,13 +2,13 @@ import SwiftUI
 import GoogleMobileAds
 import UIKit
 
-final private class BannerAd: UIViewControllerRepresentable  {
+struct BannerAd: UIViewControllerRepresentable  {
     
     func makeUIViewController(context: Context) -> UIViewController {
         let view = GADBannerView(adSize: kGADAdSizeBanner)
         
         let viewController = UIViewController()
-        view.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        view.adUnitID = "ca-app-pub-5930517905337542/5734689242"    // your pub id and unit id. ca-app-pub-0000000000000000/0000000000
         view.rootViewController = viewController
         viewController.view.addSubview(view)
         viewController.view.frame = CGRect(origin: .zero, size: kGADAdSizeBanner.size)
@@ -21,7 +21,7 @@ final private class BannerAd: UIViewControllerRepresentable  {
 }
 
 
-struct Banner_Previews: PreviewProvider {
+struct BannerAd_Previews: PreviewProvider {
     static var previews: some View {
         BannerAd()
     }
